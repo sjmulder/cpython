@@ -803,6 +803,10 @@ class PyBuildExt(build_ext):
             self.lib_dirs += ['/usr/lib/hpux64', '/usr/lib/hpux32']
 
         if MACOS:
+            sysroot = macosx_sdk_root()
+            self.inc_dirs.append(sysroot + '/usr/include')
+            self.lib_dirs.append(sysroot + '/usr/lib')
+
             # This should work on any unixy platform ;-)
             # If the user has bothered specifying additional -I and -L flags
             # in OPT and LDFLAGS we might as well use them here.
