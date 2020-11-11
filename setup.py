@@ -680,6 +680,9 @@ class PyBuildExt(build_ext):
             lib_dirs += ['/usr/lib/hpux64', '/usr/lib/hpux32']
 
         if host_platform == 'darwin':
+            inc_dirs.append(macosx_sdk_root() + '/usr/include')
+            lib_dirs.append(macosx_sdk_root() + '/usr/lib')
+
             # This should work on any unixy platform ;-)
             # If the user has bothered specifying additional -I and -L flags
             # in OPT and LDFLAGS we might as well use them here.
